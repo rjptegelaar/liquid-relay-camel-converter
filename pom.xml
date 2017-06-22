@@ -2,12 +2,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>liquid-relay-camel-converter</artifactId>
 	<version>1.0.2-SNAPSHOT</version>
-	<name>liquid-relay-camel-converter</name>
-	<url>http://www.paultegelaar.nl</url>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<url>https://github.com/rjptegelaar/liquid-relay-camel-converter</url>
 	<parent>
-		<groupId>com.pte.liquid.relay</groupId>
+		<groupId>nl.paultegelaar.liquid.relay</groupId>
 		<artifactId>liquid-parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 	</parent>
 	<scm>
 		<connection>scm:git:https://github.com/rjptegelaar/liquid-relay-camel-converter</connection>
@@ -44,7 +44,24 @@
 						<version>2.14.1</version>
 					</dependency>
 				</dependencies>
-			</plugin>			
+			</plugin>	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>						
+							<keyname>paultegelaar</keyname>
+							<passphrase>${gpg-passphrase}</passphrase>														
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>				
 		</plugins>
 	</build>
 
@@ -64,9 +81,9 @@
 		
 		<!-- LIQUID -->
 		<dependency>
-			<groupId>com.pte.liquid.relay</groupId>
+			<groupId>nl.paultegelaar.liquid.relay</groupId>
 			<artifactId>RelayInterfaces</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 	<distributionManagement>
@@ -87,4 +104,20 @@
 	<issueManagement>
 		<url>https://github.com/rjptegelaar/liquid-relay-camel-converter/issues</url>
 	</issueManagement>
+	<description>Simple converter used in camel components to convert Camel exchanges to Liquidmessages.</description>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Paul Tegelaar</name>
+			<email>tegelaarpaul@gmail.com</email>
+			<organization>Paul Tegelaar</organization>
+			<organizationUrl>http://www.paultegelaar.nl</organizationUrl>
+		</developer>
+	</developers>
 </project>
